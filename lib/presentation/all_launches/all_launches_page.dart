@@ -32,22 +32,34 @@ class AllLaunchesPage extends StatelessWidget {
           return Center(
             child: Column(
               children: [
-                Row(
-                  children: [
-                    InkWell(
-                      onTap: () {
-                        spaceXFlightSortNotifier.toggleSort();
-                      },
-                      child: Row(
-                        children: [
-                          Icon(Icons.sort),
-                          Text(spaceXFlightSort == SpaceXFlightSort.descending
-                              ? 'Flight number: oldest'
-                              : 'Flight number: newest'),
-                        ],
-                      ),
-                    )
-                  ],
+                Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: Row(
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          spaceXFlightSortNotifier.toggleSort();
+                        },
+                        child: Row(
+                          spacing: 4,
+                          children: [
+                            Icon(
+                              Icons.sort,
+                              color: Color(0xFFD28C7A),
+                            ),
+                            Text(
+                              spaceXFlightSort == SpaceXFlightSort.descending
+                                  ? 'Flight number: oldest'
+                                  : 'Flight number: newest',
+                              style: TextStyle(
+                                color: Color(0xFFD28C7A),
+                              ),
+                            ),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
                 ),
                 Expanded(
                   child: RefreshIndicator(

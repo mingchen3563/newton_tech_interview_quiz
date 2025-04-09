@@ -114,7 +114,7 @@ void main() {
     final launches = await getSpaceXLaunchesUsecase();
     expect(launches, isA<List<SpaceXFlight>>());
     expect(launches.length, 1);
-    expect(launches[0].flightNumber, 'Flight 110');
+    expect(launches[0].flightNumber, 110);
     expect(launches[0].missionName, 'CRS-21');
     expect(launches[0].launchDate, DateTime.fromMillisecondsSinceEpoch(1607271420*1000));
     expect(launches[0].articleLink, null);

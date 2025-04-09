@@ -1,5 +1,5 @@
 class SpaceXFlight {
-  final String flightNumber;
+  final int flightNumber;
   final String missionName;
   final DateTime launchDate;
   final String? iconPath;

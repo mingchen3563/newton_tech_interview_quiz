@@ -7,7 +7,7 @@ void main() {
 
   final flightPatch1 = [
     SpaceXFlight(
-      flightNumber: '1',
+      flightNumber: 1,
       missionName: 'Mission 1',
       launchDate: DateTime.now(),
       iconPath: 'icon_path_1',
@@ -16,7 +16,7 @@ void main() {
       videoLink: 'video_link_1',
     ),
     SpaceXFlight(
-      flightNumber: '2',
+      flightNumber: 2,
       missionName: 'Mission 2',
       launchDate: DateTime.now(),
       iconPath: 'icon_path_2',
@@ -27,7 +27,7 @@ void main() {
   ];
   final flightPatch2 = [
     SpaceXFlight(
-      flightNumber: '3',
+      flightNumber: 3,
       missionName: 'Mission 3',
       launchDate: DateTime.now(),
       iconPath: 'icon_path_3',

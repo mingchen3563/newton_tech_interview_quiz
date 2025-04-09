@@ -4,7 +4,7 @@ import 'package:newton_tech_interview_quiz/domain/value_objects/spacex_flight.da
 class SpaceXFlightMapper {
   static SpaceXFlight fromDto(LaunchesDto dto) {
     return SpaceXFlight(
-      flightNumber: 'Flight ${dto.flightNumber}',
+      flightNumber: dto.flightNumber,
       missionName: dto.missionName,
       launchDate:
           DateTime.fromMillisecondsSinceEpoch(dto.launchDateUnix * 1000),

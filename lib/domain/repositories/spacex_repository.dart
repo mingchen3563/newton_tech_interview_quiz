@@ -1,5 +1,5 @@
-import 'package:newton_tech_interview_quiz/domain/value_objects/spacex_flight.dart';
+import 'package:newton_tech_interview_quiz/data/dtos/launches_dto.dart';
 
 abstract class SpaceXRepository {
-  Future<List<SpaceXFlight>> getLaunches();
+  Future<List<LaunchesDto>> getLaunches();
 }

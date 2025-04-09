@@ -2,10 +2,10 @@ class SpaceXFlight {
   final String flightNumber;
   final String missionName;
   final DateTime launchDate;
-  final String iconPath;
-  final String wikiLink;
-  final String articleLink;
-  final String videoLink;
+  final String? iconPath;
+  final String? wikiLink;
+  final String? articleLink;
+  final String? videoLink;
   SpaceXFlight({
     required this.flightNumber,
     required this.missionName,

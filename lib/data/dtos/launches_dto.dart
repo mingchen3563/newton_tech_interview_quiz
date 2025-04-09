@@ -20,7 +20,7 @@ class LaunchesDto {
   final bool? launchSuccess;
   final LaunchFailureDetailsDto? launchFailureDetails;
   final LinksDto links;
-  final String details;
+  final String? details;
   final String? staticFireDateUtc;
   final int? staticFireDateUnix;
   final TimelineDto? timeline;
@@ -76,10 +76,12 @@ class LaunchesDto {
           ? LaunchFailureDetailsDto.fromJson(json['launch_failure_details'])
           : null,
       links: LinksDto.fromJson(json['links']),
-      details: json['details'],
+      details: json.getOrElse('details', null),
       staticFireDateUtc: json['static_fire_date_utc'],
       staticFireDateUnix: json['static_fire_date_unix'],
-      timeline: json['timeline'] != null ? TimelineDto.fromJson(json['timeline']) : null,
+      timeline: json['timeline'] != null
+          ? TimelineDto.fromJson(json['timeline'])
+          : null,
       crew: json['crew'],
     );
   }
@@ -109,7 +111,9 @@ class RocketDto {
       rocketType: json['rocket_type'],
       firstStage: FirstStageDto.fromJson(json['first_stage']),
       secondStage: SecondStageDto.fromJson(json['second_stage']),
-      fairings: json['fairings'] != null ? FairingsDto.fromJson(json['fairings']) : null,
+      fairings: json['fairings'] != null
+          ? FairingsDto.fromJson(json['fairings'])
+          : null,
     );
   }
 }
@@ -127,14 +131,14 @@ class FirstStageDto {
 }
 
 class CoreDto {
-  final String coreSerial;
-  final int flight;
+  final String? coreSerial;
+  final int? flight;
   final dynamic block;
-  final bool gridfins;
-  final bool legs;
-  final bool reused;
+  final bool? gridfins;
+  final bool? legs;
+  final bool? reused;
   final bool? landSuccess;
-  final bool landingIntent;
+  final bool? landingIntent;
   final dynamic landingType;
   final dynamic landingVehicle;
 
@@ -153,29 +157,29 @@ class CoreDto {
 
   factory CoreDto.fromJson(Map<String, dynamic> json) {
     return CoreDto(
-      coreSerial: json['core_serial'],
-      flight: json['flight'],
-      block: json['block'],
-      gridfins: json['gridfins'],
-      legs: json['legs'],
-      reused: json['reused'],
-      landSuccess: json['land_success'],
-      landingIntent: json['landing_intent'],
-      landingType: json['landing_type'],
-      landingVehicle: json['landing_vehicle'],
+      coreSerial: json.getOrElse('core_serial', null),
+      flight: json.getOrElse('flight', null),
+      block: json.getOrElse('block', null),
+      gridfins: json.getOrElse('gridfins', null),
+      legs: json.getOrElse('legs', null),
+      reused: json.getOrElse('reused', null),
+      landSuccess: json.getOrElse('land_success', null),
+      landingIntent: json.getOrElse('landing_intent', null),
+      landingType: json.getOrElse('landing_type', null),
+      landingVehicle: json.getOrElse('landing_vehicle', null),
     );
   }
 }
 
 class SecondStageDto {
-  final int block;
+  final int? block;
   final List<PayloadDto> payloads;
 
   SecondStageDto({required this.block, required this.payloads});
 
   factory SecondStageDto.fromJson(Map<String, dynamic> json) {
     return SecondStageDto(
-      block: json['block'],
+      block: json.getOrElse('block', null),
       payloads: (json['payloads'] as List)
           .map((e) => PayloadDto.fromJson(e))
           .toList(),
@@ -188,8 +192,8 @@ class PayloadDto {
   final List<dynamic> noradId;
   final bool reused;
   final List<String> customers;
-  final String nationality;
-  final String manufacturer;
+  final String? nationality;
+  final String? manufacturer;
   final String payloadType;
   final double? payloadMassKg;
   final double? payloadMassLbs;
@@ -216,8 +220,8 @@ class PayloadDto {
       noradId: List<dynamic>.from(json['norad_id'] ?? []),
       reused: json['reused'],
       customers: List<String>.from(json['customers']),
-      nationality: json['nationality'],
-      manufacturer: json['manufacturer'],
+      nationality: json.getOrElse('nationality', null),
+      manufacturer: json.getOrElse('manufacturer', null),
       payloadType: json['payload_type'],
       payloadMassKg: json.getOrElse('payload_mass_kg', null)?.toDouble(),
       payloadMassLbs: json.getOrElse('payload_mass_lbs', null)?.toDouble(),
@@ -228,8 +232,8 @@ class PayloadDto {
 }
 
 class OrbitParamsDto {
-  final String referenceSystem;
-  final String regime;
+  final String? referenceSystem;
+  final String? regime;
   final dynamic longitude;
   final dynamic semiMajorAxisKm;
   final dynamic eccentricity;
@@ -264,29 +268,29 @@ class OrbitParamsDto {
 
   factory OrbitParamsDto.fromJson(Map<String, dynamic> json) {
     return OrbitParamsDto(
-      referenceSystem: json['reference_system'],
-      regime: json['regime'],
-      longitude: json['longitude'],
-      semiMajorAxisKm: json['semi_major_axis_km'],
-      eccentricity: json['eccentricity'],
+      referenceSystem: json.getOrElse('reference_system', null),
+      regime: json.getOrElse('regime', null),
+      longitude: json.getOrElse('longitude', null),
+      semiMajorAxisKm: json.getOrElse('semi_major_axis_km', null),
+      eccentricity: json.getOrElse('eccentricity', null),
       periapsisKm: json.getOrElse('periapsis_km', null)?.toDouble(),
       apoapsisKm: json.getOrElse('apoapsis_km', null)?.toDouble(),
       inclinationDeg: json.getOrElse('inclination_deg', null)?.toDouble(),
-      periodMin: json['period_min'],
-      lifespanYears: json['lifespan_years'],
-      epoch: json['epoch'],
-      meanMotion: json['mean_motion'],
-      raan: json['raan'],
-      argOfPericenter: json['arg_of_pericenter'],
-      meanAnomaly: json['mean_anomaly'],
+      periodMin: json.getOrElse('period_min', null),
+      lifespanYears: json.getOrElse('lifespan_years', null),
+      epoch: json.getOrElse('epoch', null),
+      meanMotion: json.getOrElse('mean_motion', null),
+      raan: json.getOrElse('raan', null),
+      argOfPericenter: json.getOrElse('arg_of_pericenter', null),
+      meanAnomaly: json.getOrElse('mean_anomaly', null),
     );
   }
 }
 
 class FairingsDto {
-  final bool reused;
-  final bool recoveryAttempt;
-  final bool recovered;
+  final bool? reused;
+  final bool? recoveryAttempt;
+  final bool? recovered;
   final dynamic ship;
 
   FairingsDto({
@@ -298,10 +302,10 @@ class FairingsDto {
 
   factory FairingsDto.fromJson(Map<String, dynamic> json) {
     return FairingsDto(
-      reused: json['reused'],
-      recoveryAttempt: json['recovery_attempt'],
-      recovered: json['recovered'],
-      ship: json['ship'],
+      reused: json.getOrElse('reused', null),
+      recoveryAttempt: json.getOrElse('recovery_attempt', null),
+      recovered: json.getOrElse('recovered', null),
+      ship: json.getOrElse('ship', null),
     );
   }
 }
@@ -357,8 +361,8 @@ class LaunchFailureDetailsDto {
 }
 
 class LinksDto {
-  final String missionPatch;
-  final String missionPatchSmall;
+  final String? missionPatch;
+  final String? missionPatchSmall;
   final dynamic redditCampaign;
   final dynamic redditLaunch;
   final dynamic redditRecovery;
@@ -387,28 +391,28 @@ class LinksDto {
 
   factory LinksDto.fromJson(Map<String, dynamic> json) {
     return LinksDto(
-      missionPatch: json['mission_patch'],
-      missionPatchSmall: json['mission_patch_small'],
-      redditCampaign: json['reddit_campaign'],
-      redditLaunch: json['reddit_launch'],
-      redditRecovery: json['reddit_recovery'],
-      redditMedia: json['reddit_media'],
-      presskit: json['presskit'],
+      missionPatch: json.getOrElse('mission_patch', null),
+      missionPatchSmall: json.getOrElse('mission_patch_small', null),
+      redditCampaign: json.getOrElse('reddit_campaign', null),
+      redditLaunch: json.getOrElse('reddit_launch', null),
+      redditRecovery: json.getOrElse('reddit_recovery', null),
+      redditMedia: json.getOrElse('reddit_media', null),
+      presskit: json.getOrElse('presskit', null),
       articleLink: json.getOrElse('article_link', null),
-      wikipedia: json['wikipedia'],
-      videoLink: json['video_link'],
-      youtubeId: json['youtube_id'],
+      wikipedia: json.getOrElse('wikipedia', null),
+      videoLink: json.getOrElse('video_link', null),
+      youtubeId: json.getOrElse('youtube_id', null),
       flickrImages: List<dynamic>.from(json['flickr_images'] ?? []),
     );
   }
 }
 
 class TimelineDto {
-  final int webcastLiftoff;
+  final int? webcastLiftoff;
 
   TimelineDto({required this.webcastLiftoff});
 
   factory TimelineDto.fromJson(Map<String, dynamic> json) {
-    return TimelineDto(webcastLiftoff: json['webcast_liftoff']);
+    return TimelineDto(webcastLiftoff: json.getOrElse('webcast_liftoff', null));
   }
 }

@@ -63,7 +63,7 @@ void main() {
   test('spacex flight mapper ...', () async {
     final SpaceXFlight spaceXFlight =
         SpaceXFlightMapper.fromDto(fakeLaunchesDto);
-    expect(spaceXFlight.flightNumber, 'Flight 1');
+    expect(spaceXFlight.flightNumber, 1);
     expect(spaceXFlight.missionName, 'FalconSat');
     final launchDateUtc = spaceXFlight.launchDate.toUtc();
     expect(launchDateUtc.year, 2006);

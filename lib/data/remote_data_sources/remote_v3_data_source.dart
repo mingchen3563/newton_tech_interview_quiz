@@ -6,11 +6,11 @@ class RemoteV3DataSource {
   RemoteV3DataSource({ApiService? apiService})
       : apiService = apiService ?? ApiService();
 
-  Future<Map<String, dynamic>> getLaunches() async {
+  Future<dynamic> getLaunches() async {
     final response = await apiService.get('/v3/launches');
     final code = response.statusCode;
     return switch (code) {
-      200 => response.data as Map<String, dynamic>,
+      200 => response.data,
       _ => throw Exception('api error'),
     };
   }

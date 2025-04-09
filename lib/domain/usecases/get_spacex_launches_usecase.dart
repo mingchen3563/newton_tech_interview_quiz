@@ -16,7 +16,7 @@ class GetSpaceXLaunchesUsecase {
       launches = await spaceXRepository.getLaunches();
     } catch (e, s) {
       log('Error getting launches', error: e, stackTrace: s);
-      throw e;
+      rethrow;
     }
     return launches
         .map((launch) => SpaceXFlightMapper.fromDto(launch))

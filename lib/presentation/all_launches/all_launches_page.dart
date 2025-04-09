@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:newton_tech_interview_quiz/domain/value_objects/spacex_flight_folder.dart';
 import 'package:newton_tech_interview_quiz/presentation/all_launches/all_launches_viewmodel.dart';
+import 'package:newton_tech_interview_quiz/presentation/all_launches/flight_info_tile.dart';
 
 class AllLaunchesPage extends StatelessWidget {
   const AllLaunchesPage({super.key});
@@ -17,8 +18,8 @@ class AllLaunchesPage extends StatelessWidget {
         ),
         actions: [
           IconButton(
-            icon: Icon(Icons.more_vert),
             onPressed: () {},
+            icon: Icon(Icons.more_vert),
           ),
         ],
       ),
@@ -82,36 +83,7 @@ class AllLaunchesPage extends StatelessWidget {
                             itemCount: sortedFlights.length,
                             itemBuilder: (context, index) {
                               final flight = sortedFlights[index];
-                              return ListTile(
-                                isThreeLine: true,
-                                title: Text(
-                                  'Flight ${flight.flightNumber}',
-                                  // style: Theme.of(context).textTheme.bodySmall,
-                                ),
-                                subtitle: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      flight.missionName,
-                                      // style:
-                                      //     Theme.of(context).textTheme.titleMedium,
-                                    ),
-                                    Text(
-                                      flight.launchDate.toLocal().toString(),
-                                      // style:
-                                      //     Theme.of(context).textTheme.bodySmall,
-                                    ),
-                                  ],
-                                ),
-                                trailing: Image.network(
-                                  flight.iconPath ?? '',
-                                  width: 100,
-                                  height: 100,
-                                  errorBuilder: (context, error, stackTrace) {
-                                    return const SizedBox.shrink();
-                                  },
-                                ),
-                              );
+                              return FlightInfoTile(flight: flight);
                             },
                           );
                         }),

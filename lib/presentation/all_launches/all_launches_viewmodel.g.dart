@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'provider.dart';
+part of 'all_launches_viewmodel.dart';
 
 // **************************************************************************
 // RiverpodGenerator
@@ -26,5 +26,22 @@ final spaceXFlightFolderProvider =
 // ignore: unused_element
 typedef SpaceXFlightFolderRef
     = AutoDisposeFutureProviderRef<SpaceXFlightFolder>;
+String _$spaceXFlightSortNotifierHash() =>
+    r'9b4143f69a82b57fb62918faad94ec20c006e250';
+
+/// See also [SpaceXFlightSortNotifier].
+@ProviderFor(SpaceXFlightSortNotifier)
+final spaceXFlightSortNotifierProvider = AutoDisposeNotifierProvider<
+    SpaceXFlightSortNotifier, SpaceXFlightSort>.internal(
+  SpaceXFlightSortNotifier.new,
+  name: r'spaceXFlightSortNotifierProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$spaceXFlightSortNotifierHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef _$SpaceXFlightSortNotifier = AutoDisposeNotifier<SpaceXFlightSort>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

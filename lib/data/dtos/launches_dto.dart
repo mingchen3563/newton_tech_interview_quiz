@@ -1,3 +1,5 @@
+import 'package:newton_tech_interview_quiz/infra/extensions.dart';
+
 class LaunchesDto {
   final int flightNumber;
   final String missionName;
@@ -10,18 +12,18 @@ class LaunchesDto {
   final bool isTentative;
   final String tentativeMaxPrecision;
   final bool tbd;
-  final int launchWindow;
+  final int? launchWindow;
   final RocketDto rocket;
   final List<String> ships;
   final TelemetryDto telemetry;
   final LaunchSiteDto launchSite;
-  final bool launchSuccess;
+  final bool? launchSuccess;
   final LaunchFailureDetailsDto? launchFailureDetails;
   final LinksDto links;
   final String details;
   final String? staticFireDateUtc;
   final int? staticFireDateUnix;
-  final TimelineDto timeline;
+  final TimelineDto? timeline;
   final dynamic crew;
 
   LaunchesDto({
@@ -64,12 +66,12 @@ class LaunchesDto {
       isTentative: json['is_tentative'],
       tentativeMaxPrecision: json['tentative_max_precision'],
       tbd: json['tbd'],
-      launchWindow: json['launch_window'],
+      launchWindow: json.getOrElse('launch_window', null),
       rocket: RocketDto.fromJson(json['rocket']),
       ships: List<String>.from(json['ships'] ?? []),
       telemetry: TelemetryDto.fromJson(json['telemetry']),
       launchSite: LaunchSiteDto.fromJson(json['launch_site']),
-      launchSuccess: json['launch_success'],
+      launchSuccess: json.getOrElse('launch_success', null),
       launchFailureDetails: json['launch_failure_details'] != null
           ? LaunchFailureDetailsDto.fromJson(json['launch_failure_details'])
           : null,
@@ -77,7 +79,7 @@ class LaunchesDto {
       details: json['details'],
       staticFireDateUtc: json['static_fire_date_utc'],
       staticFireDateUnix: json['static_fire_date_unix'],
-      timeline: TimelineDto.fromJson(json['timeline']),
+      timeline: json['timeline'] != null ? TimelineDto.fromJson(json['timeline']) : null,
       crew: json['crew'],
     );
   }
@@ -89,7 +91,7 @@ class RocketDto {
   final String rocketType;
   final FirstStageDto firstStage;
   final SecondStageDto secondStage;
-  final FairingsDto fairings;
+  final FairingsDto? fairings;
 
   RocketDto({
     required this.rocketId,
@@ -107,7 +109,7 @@ class RocketDto {
       rocketType: json['rocket_type'],
       firstStage: FirstStageDto.fromJson(json['first_stage']),
       secondStage: SecondStageDto.fromJson(json['second_stage']),
-      fairings: FairingsDto.fromJson(json['fairings']),
+      fairings: json['fairings'] != null ? FairingsDto.fromJson(json['fairings']) : null,
     );
   }
 }
@@ -189,8 +191,8 @@ class PayloadDto {
   final String nationality;
   final String manufacturer;
   final String payloadType;
-  final double payloadMassKg;
-  final double payloadMassLbs;
+  final double? payloadMassKg;
+  final double? payloadMassLbs;
   final String orbit;
   final OrbitParamsDto orbitParams;
 
@@ -217,8 +219,8 @@ class PayloadDto {
       nationality: json['nationality'],
       manufacturer: json['manufacturer'],
       payloadType: json['payload_type'],
-      payloadMassKg: json['payload_mass_kg'].toDouble(),
-      payloadMassLbs: json['payload_mass_lbs'].toDouble(),
+      payloadMassKg: json.getOrElse('payload_mass_kg', null)?.toDouble(),
+      payloadMassLbs: json.getOrElse('payload_mass_lbs', null)?.toDouble(),
       orbit: json['orbit'],
       orbitParams: OrbitParamsDto.fromJson(json['orbit_params']),
     );
@@ -231,9 +233,9 @@ class OrbitParamsDto {
   final dynamic longitude;
   final dynamic semiMajorAxisKm;
   final dynamic eccentricity;
-  final double periapsisKm;
-  final double apoapsisKm;
-  final double inclinationDeg;
+  final double? periapsisKm;
+  final double? apoapsisKm;
+  final double? inclinationDeg;
   final dynamic periodMin;
   final dynamic lifespanYears;
   final dynamic epoch;
@@ -267,9 +269,9 @@ class OrbitParamsDto {
       longitude: json['longitude'],
       semiMajorAxisKm: json['semi_major_axis_km'],
       eccentricity: json['eccentricity'],
-      periapsisKm: json['periapsis_km'].toDouble(),
-      apoapsisKm: json['apoapsis_km'].toDouble(),
-      inclinationDeg: json['inclination_deg'].toDouble(),
+      periapsisKm: json.getOrElse('periapsis_km', null)?.toDouble(),
+      apoapsisKm: json.getOrElse('apoapsis_km', null)?.toDouble(),
+      inclinationDeg: json.getOrElse('inclination_deg', null)?.toDouble(),
       periodMin: json['period_min'],
       lifespanYears: json['lifespan_years'],
       epoch: json['epoch'],
@@ -362,10 +364,10 @@ class LinksDto {
   final dynamic redditRecovery;
   final dynamic redditMedia;
   final dynamic presskit;
-  final String articleLink;
-  final String wikipedia;
-  final String videoLink;
-  final String youtubeId;
+  final String? articleLink;
+  final String? wikipedia;
+  final String? videoLink;
+  final String? youtubeId;
   final List<dynamic> flickrImages;
 
   LinksDto({
@@ -392,7 +394,7 @@ class LinksDto {
       redditRecovery: json['reddit_recovery'],
       redditMedia: json['reddit_media'],
       presskit: json['presskit'],
-      articleLink: json['article_link'],
+      articleLink: json.getOrElse('article_link', null),
       wikipedia: json['wikipedia'],
       videoLink: json['video_link'],
       youtubeId: json['youtube_id'],

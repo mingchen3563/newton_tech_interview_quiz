@@ -6,11 +6,12 @@
 import 'dart:async' as _i4;
 
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:newton_tech_interview_quiz/data/dtos/launches_dto.dart' as _i5;
 import 'package:newton_tech_interview_quiz/data/remote_data_sources/remote_v3_data_source.dart'
     as _i2;
 import 'package:newton_tech_interview_quiz/data/repositories/spacex_repository_impl.dart'
     as _i3;
+import 'package:newton_tech_interview_quiz/domain/value_objects/spacex_flight.dart'
+    as _i5;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -53,12 +54,12 @@ class MockSpaceXRepositoryImpl extends _i1.Mock
           as _i2.RemoteV3DataSource);
 
   @override
-  _i4.Future<List<_i5.LaunchesDto>> getLaunches() =>
+  _i4.Future<List<_i5.SpaceXFlight>> getLaunches() =>
       (super.noSuchMethod(
             Invocation.method(#getLaunches, []),
-            returnValue: _i4.Future<List<_i5.LaunchesDto>>.value(
-              <_i5.LaunchesDto>[],
+            returnValue: _i4.Future<List<_i5.SpaceXFlight>>.value(
+              <_i5.SpaceXFlight>[],
             ),
           )
-          as _i4.Future<List<_i5.LaunchesDto>>);
+          as _i4.Future<List<_i5.SpaceXFlight>>);
 }

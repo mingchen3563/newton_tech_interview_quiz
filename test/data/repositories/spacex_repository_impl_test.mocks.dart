@@ -6,6 +6,7 @@
 import 'dart:async' as _i4;
 
 import 'package:mockito/mockito.dart' as _i1;
+import 'package:newton_tech_interview_quiz/data/dtos/launches_dto.dart' as _i5;
 import 'package:newton_tech_interview_quiz/data/remote_data_sources/remote_v3_data_source.dart'
     as _i3;
 import 'package:newton_tech_interview_quiz/services/api_service.dart' as _i2;
@@ -50,10 +51,12 @@ class MockRemoteV3DataSource extends _i1.Mock
           as _i2.ApiService);
 
   @override
-  _i4.Future<dynamic> getLaunches() =>
+  _i4.Future<List<_i5.LaunchesDto>> getLaunches() =>
       (super.noSuchMethod(
             Invocation.method(#getLaunches, []),
-            returnValue: _i4.Future<dynamic>.value(),
+            returnValue: _i4.Future<List<_i5.LaunchesDto>>.value(
+              <_i5.LaunchesDto>[],
+            ),
           )
-          as _i4.Future<dynamic>);
+          as _i4.Future<List<_i5.LaunchesDto>>);
 }
